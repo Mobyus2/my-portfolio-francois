@@ -10,7 +10,8 @@ import {
   TrendingUp,
   Github,
   Linkedin,
-  FileText
+  FileText,
+  Download
 } from "lucide-react";
 
 // IMPORTS MANQUANTS - AJOUTE CES LIGNES
@@ -27,6 +28,7 @@ import {
 const Hero = () => {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
+  const [isDownloading, setIsDownloading] = useState(false);
 
   // Données dynamiques pour le graphique
   const data = [
@@ -46,6 +48,12 @@ const Hero = () => {
   ];
   const [currentRole, setCurrentRole] = useState(0);
 
+  // LIEN CORRIGÉ - Utilisation du lien de téléchargement direct Google Drive
+  // Extrait l'ID du fichier de votre lien original
+  const fileId = "1Ryyl6Ff7HQBZc0WShmkTmzll8EDNjszl";
+  const cvDirectLink = `https://drive.google.com/uc?export=download&id=${fileId}`;
+  const cvViewLink = `https://drive.google.com/file/d/${fileId}/view`;
+
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentRole((prev) => (prev + 1) % roles.length);
@@ -64,6 +72,25 @@ const Hero = () => {
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
+
+  // Fonction de téléchargement du CV
+  const handleDownloadCV = () => {
+    setIsDownloading(true);
+
+    // Option 1: Utiliser le lien de téléchargement direct
+    const link = document.createElement('a');
+    link.href = cvDirectLink;
+    link.download = 'CV_Francois_Louis_Marie_Ntonga_Data_Engineer.pdf';
+    link.target = '_blank'; // Ouvre dans un nouvel onglet pour éviter les problèmes CORS
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    // Réinitialiser l'état après un délai
+    setTimeout(() => {
+      setIsDownloading(false);
+    }, 2000);
+  };
 
   // Animation variants
   const containerVariants = {
@@ -271,36 +298,60 @@ const Hero = () => {
                 />
               </motion.a>
 
-              <motion.a
-                href="#upload"
+              <motion.button
+                onClick={handleDownloadCV}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-white text-gray-700 font-semibold rounded-xl border-2 border-gray-200 hover:border-blue-500 hover:text-blue-600 transition-all duration-300 shadow-lg hover:shadow-xl"
+                disabled={isDownloading}
+                className="relative px-8 py-4 bg-white text-gray-700 font-semibold rounded-xl border-2 border-gray-200 hover:border-blue-500 hover:text-blue-600 transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed group"
               >
-                Télécharger CV
-              </motion.a>
+                <span className="flex items-center gap-2">
+                  {isDownloading ? (
+                    <>
+                      <motion.div
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                        className="w-4 h-4 border-2 border-blue-500 border-t-transparent rounded-full"
+                      />
+                      Téléchargement...
+                    </>
+                  ) : (
+                    <>
+                      <Download size={18} className="group-hover:translate-y-0.5 transition-transform" />
+                      Télécharger CV
+                    </>
+                  )}
+                </span>
+              </motion.button>
             </div>
 
             {/* Réseaux sociaux */}
             <div className="flex items-center gap-6 pt-6">
               <motion.a
-                href="https://linkedin.com"
+                href="https://linkedin.com/in/francois-louis-marie-ntonga"
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ y: -3 }}
                 className="text-gray-400 hover:text-blue-600 transition-colors"
               >
                 <Linkedin size={24} />
               </motion.a>
               <motion.a
-                href="https://github.com"
+                href="https://github.com/francoisntonga"
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ y: -3 }}
                 className="text-gray-400 hover:text-gray-900 transition-colors"
               >
                 <Github size={24} />
               </motion.a>
               <motion.a
-                href="#contact"
+                href={cvViewLink}
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ y: -3 }}
                 className="text-gray-400 hover:text-orange-500 transition-colors"
+                title="Voir le CV"
               >
                 <FileText size={24} />
               </motion.a>
@@ -350,7 +401,7 @@ const Hero = () => {
                 </div>
               </div>
 
-              {/* Graphique amélioré - MAINTENANT LES IMPORTS SONT PRÉSENTS */}
+              {/* Graphique amélioré */}
               <div className="w-full h-64 mb-6">
                 <ResponsiveContainer>
                   <LineChart data={data} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>

@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+// frontend/src/components/Projects.jsx
+import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import {
   Settings,
@@ -23,10 +24,76 @@ import {
   GitBranch,
   Workflow,
   Server,
-  Code2
+  Code2,
+  GitMerge,
+  Container,
+  Wind,
+  Gauge,
+  X,
+  ZoomIn,
+  ChevronLeft,
+  ChevronRight as ChevronRightIcon
 } from "lucide-react";
 
+// Import des images
+import bankingImage from '../assets/banking_project.png';
+import weatherImage from '../assets/weather_project.png';
+import databricksImage from '../assets/databricks_project.png';
+import churnImage from '../assets/churn_project.png';
+import performanceImage from '../assets/performance_project.png';
+
 const projects = [
+  // PROJET 1 - Banking End-to-End Data Engineering
+  {
+    title: "Banking End-to-End Data Engineering",
+    type: "Personnel",
+    description: "Pipeline de données bancaires temps réel avec CDC, Data Lake, Data Warehouse Cloud et visualisation Power BI pour une architecture Data moderne et scalable.",
+    points: [
+      "Change Data Capture (CDC) avec Kafka & Debezium pour la capture temps réel des transactions bancaires",
+      "Data Lake avec MinIO (S3-compatible) stockant les données brutes au format Parquet",
+      "Data Warehouse Cloud sur Snowflake avec architecture RAW/STAGING/ANALYTICS",
+      "Transformations dbt avec gestion d'historique SCD Type 2 et modélisation star schema",
+      "Orchestration complète avec Airflow et industrialisation CI/CD via GitHub Actions",
+      "Dashboard interactif Power BI avec KPIs métier (clients actifs, volumes transactions, soldes moyens)"
+    ],
+    technologies: ["PostgreSQL", "Kafka", "Debezium", "MinIO", "Snowflake", "dbt", "Airflow", "Power BI", "GitHub Actions", "Docker", "Python", "CDC", "Parquet", "SCD2"],
+    gradient: "from-indigo-500 to-cyan-500",
+    icon: Database,
+    color: "indigo",
+    metrics: ["Temps réel", "CDC", "SCD2", "Cloud Native"],
+    bgPattern: "radial-gradient(circle at 20% 30%, rgba(99,102,241,0.05) 0%, transparent 50%)",
+    link: "https://www.linkedin.com/posts/francois-louis-marie-ntonga-7b982329b_pipeline-data-engineering-end-to-end-ugcPost-7432020719179419649-N-r3?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEiPCr0BJYutV6DGpPs-hFdaMf39pxwKllQ",
+    category: "data-engineering",
+    featured: true,
+    image: bankingImage
+  },
+
+  // PROJET 2 - Weather Data Pipeline with Airflow
+  {
+    title: "Weather Data Pipeline - Airflow & dbt",
+    type: "Personnel",
+    description: "Pipeline Data Engineering temps réel pour l'ingestion et la transformation de données météorologiques avec orchestration Airflow et visualisation Superset.",
+    points: [
+      "Ingestion temps réel via API Weatherstack avec script Python automatisé",
+      "Orchestration complète avec Airflow (DAGs ingestion + transformation)",
+      "Transformations SQL avec dbt (modèles, tests, documentation)",
+      "Base de données PostgreSQL pour le stockage des données brutes et transformées",
+      "Visualisation interactive avec Apache Superset et rafraîchissement automatique",
+      "Infrastructure conteneurisée avec Docker Compose (6 services interconnectés)"
+    ],
+    technologies: ["Airflow", "dbt", "PostgreSQL", "Docker", "Python", "API REST", "Superset", "SQL", "Weatherstack", "ELT", "DataOps"],
+    gradient: "from-teal-500 to-emerald-500",
+    icon: Wind,
+    color: "teal",
+    metrics: ["Temps réel", "Orchestré", "6 services", "Auto-refresh"],
+    bgPattern: "radial-gradient(circle at 80% 70%, rgba(20,184,166,0.05) 0%, transparent 50%)",
+    link: "https://www.linkedin.com/posts/francois-louis-marie-ntonga-7b982329b_pipeline-data-engineering-end-to-end-ugcPost-7430229688469315584-H-Dr?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEiPCr0BJYutV6DGpPs-hFdaMf39pxwKllQ",
+    category: "data-engineering",
+    featured: true,
+    image: weatherImage
+  },
+
+  // PROJET 3 - Pipeline Data Engineering – Databricks
   {
     title: "Pipeline Data Engineering – Databricks",
     type: "Personnel",
@@ -44,8 +111,11 @@ const projects = [
     metrics: ["100% Cloud Native", "24/7 Automatisé", "Temps réel"],
     bgPattern: "radial-gradient(circle at 20% 30%, rgba(59,130,246,0.05) 0%, transparent 50%)",
     link: "https://www.linkedin.com/posts/francois-louis-marie-ntonga-7b982329b_projet-data-engineering-ugcPost-7426575551039143936-i750?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAEiPCr0BJYutV6DGpPs-hFdaMf39pxwKllQ",
-    category: "data-engineering"
+    category: "data-engineering",
+    image: databricksImage
   },
+
+  // PROJET 4 - Customer Churn Analytics Dashboard
   {
     title: "Customer Churn Analytics Dashboard",
     type: "Personnel",
@@ -62,8 +132,12 @@ const projects = [
     color: "orange",
     metrics: ["ROI +35%", "Précision 89%", "Temps réel"],
     bgPattern: "radial-gradient(circle at 80% 70%, rgba(249,115,22,0.05) 0%, transparent 50%)",
-    category: "data-science"
+    link: "https://github.com/francoisntonga/customer-churn-analytics",
+    category: "data-science",
+    image: churnImage
   },
+
+  // PROJET 5 - Dashboard de Pilotage Performance Commerciale
   {
     title: "Dashboard de Pilotage Performance Commerciale",
     type: "Personnel",
@@ -82,75 +156,9 @@ const projects = [
     color: "blue",
     metrics: ["Taux annulation 25%", "CA analysé", "Optimisation ventes"],
     bgPattern: "radial-gradient(circle at 60% 40%, rgba(59,130,246,0.05) 0%, transparent 50%)",
-    category: "data-viz"
-  },
-  {
-    title: "Tableau de Bord Financier IA",
-    type: "Personnel",
-    description: "Application interactive de Data Analytics et Machine Learning permettant d'analyser et de prédire les dépenses financières via une interface intelligente enrichie par un assistant IA.",
-    points: [
-      "Analyse exploratoire dynamique avec KPI interactifs et visualisations avancées (Plotly)",
-      "Modélisation prédictive (Random Forest, Ridge) avec évaluation RMSE & R² et paramétrage en temps réel",
-      "Intégration d'un assistant IA (LLM via API) pour générer des insights automatisés"
-    ],
-    technologies: ["Python", "Plotly", "Random Forest", "Ridge", "LLM", "Streamlit", "Scikit-learn"],
-    gradient: "from-purple-500 to-pink-500",
-    icon: Brain,
-    color: "purple",
-    metrics: ["RMSE optimisé", "R² > 0.85", "IA intégrée"],
-    bgPattern: "radial-gradient(circle at 30% 60%, rgba(147,51,234,0.05) 0%, transparent 50%)",
-    category: "data-science"
-  },
-  {
-    title: "Pipeline Data Engineering – Tableau de Bord Épidémiologique",
-    type: "Personnel",
-    description: "Pipeline de Data Engineering permettant l'ingestion, la normalisation, la fusion et la visualisation de bases hétérogènes (Excel/CSV) pour le suivi épidémiologique multi-sources.",
-    points: [
-      "Ingestion & Data Cleaning automatisés : upload multi-fichiers, harmonisation des schémas",
-      "Data Integration & Transformation : jointure multi-sources sur clés métier",
-      "Restitution analytique interactive : KPIs opérationnels, visualisation temporelle"
-    ],
-    technologies: ["Python", "Pandas", "Streamlit", "Excel", "CSV", "Data Cleaning", "Regex"],
-    gradient: "from-green-500 to-teal-500",
-    icon: HeartPulse,
-    color: "green",
-    metrics: ["Multi-sources", "Temps réel", "Export PNG/CSV"],
-    bgPattern: "radial-gradient(circle at 70% 30%, rgba(16,185,129,0.05) 0%, transparent 50%)",
-    category: "data-engineering"
-  },
-  {
-    title: "Deep Learning – Détection de Tumeur Cérébrale (IRM)",
-    type: "Personnel",
-    description: "Application d'Intelligence Artificielle basée sur le Deep Learning permettant la classification automatique d'images IRM cérébrales (Healthy vs Tumor) via Transfer Learning.",
-    points: [
-      "Transfer Learning avec ResNet18 (PyTorch) : fine-tuning et déploiement des poids .pth",
-      "Pipeline de traitement d'images médicales : normalisation ImageNet, softmax probabilities",
-      "Visualisation & analyse multi-images : graphiques barres, camembert, radar"
-    ],
-    technologies: ["PyTorch", "ResNet18", "Transfer Learning", "CNN", "Python", "Streamlit"],
-    gradient: "from-red-500 to-orange-500",
-    icon: Dna,
-    color: "red",
-    metrics: ["ResNet18", "Seuil configurable", "Export CSV"],
-    bgPattern: "radial-gradient(circle at 40% 70%, rgba(239,68,68,0.05) 0%, transparent 50%)",
-    category: "deep-learning"
-  },
-  {
-    title: "Classification d'images médicales - CT Kidney",
-    type: "Personnel",
-    description: "Application web d'intelligence artificielle pour la détection automatique de pathologies rénales à partir de scanners CT.",
-    points: [
-      "Modèle basé sur ResNet50 : Transfer learning avec réseau pré-entraîné sur ImageNet",
-      "Interface interactive avec Streamlit : visualisation des prédictions, scores de confiance",
-      "Performances robustes : précision > 90% sur 12 000+ échantillons du dataset CT-KIDNEY"
-    ],
-    technologies: ["ResNet50", "PyTorch", "Transfer Learning", "Streamlit", "Medical Imaging", "CNN"],
-    gradient: "from-blue-500 to-cyan-500",
-    icon: Activity,
-    color: "cyan",
-    metrics: [">90% précision", "4 classes", "12k+ samples"],
-    bgPattern: "radial-gradient(circle at 50% 50%, rgba(6,182,212,0.05) 0%, transparent 50%)",
-    category: "deep-learning"
+    link: "https://github.com/francoisntonga/performance-commerciale-dashboard",
+    category: "data-viz",
+    image: performanceImage
   }
 ];
 
@@ -179,21 +187,133 @@ const cardVariants = {
   }
 };
 
+// Composant Modal pour afficher l'image en grand
+const ImageModal = ({ isOpen, onClose, image, title, currentIndex, totalImages, onPrevious, onNext }) => {
+  if (!isOpen) return null;
+
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm"
+          onClick={onClose}
+        >
+          {/* Bouton fermer */}
+          <motion.button
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            exit={{ scale: 0 }}
+            className="absolute top-6 right-6 z-50 p-3 bg-white/10 hover:bg-white/20 rounded-full text-white transition-all duration-300 group"
+            onClick={onClose}
+          >
+            <X size={24} className="group-hover:rotate-90 transition-transform duration-300" />
+          </motion.button>
+
+          {/* Navigation - Flèche gauche */}
+          {currentIndex > 0 && (
+            <motion.button
+              initial={{ x: -50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: -50, opacity: 0 }}
+              className="absolute left-6 z-50 p-3 bg-white/10 hover:bg-white/20 rounded-full text-white transition-all duration-300 hover:scale-110"
+              onClick={(e) => {
+                e.stopPropagation();
+                onPrevious();
+              }}
+            >
+              <ChevronLeft size={32} />
+            </motion.button>
+          )}
+
+          {/* Navigation - Flèche droite */}
+          {currentIndex < totalImages - 1 && (
+            <motion.button
+              initial={{ x: 50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: 50, opacity: 0 }}
+              className="absolute right-6 z-50 p-3 bg-white/10 hover:bg-white/20 rounded-full text-white transition-all duration-300 hover:scale-110"
+              onClick={(e) => {
+                e.stopPropagation();
+                onNext();
+              }}
+            >
+              <ChevronRightIcon size={32} />
+            </motion.button>
+          )}
+
+          {/* Image */}
+          <motion.div
+            initial={{ scale: 0.5, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.5, opacity: 0 }}
+            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+            className="relative max-w-7xl max-h-[90vh] w-full h-full flex items-center justify-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={image}
+              alt={title}
+              className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
+            />
+
+            {/* Titre et compteur */}
+            <motion.div
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.2 }}
+              className="absolute bottom-6 left-1/2 transform -translate-x-1/2 bg-black/50 backdrop-blur-md px-6 py-3 rounded-full text-white text-sm font-medium flex items-center gap-4"
+            >
+              <span className="truncate max-w-md">{title}</span>
+              <span className="w-px h-4 bg-white/30" />
+              <span>{currentIndex + 1} / {totalImages}</span>
+            </motion.div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+};
+
 function Projects() {
   const [activeFilter, setActiveFilter] = useState("all");
   const [hoveredCard, setHoveredCard] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
   // Filtrer les projets
   const filteredProjects = activeFilter === "all"
     ? projects
     : projects.filter(project => project.category === activeFilter);
 
+  // Créer un tableau d'images pour la navigation dans le modal
+  const modalImages = filteredProjects.map(project => ({
+    image: project.image,
+    title: project.title
+  }));
+
+  // Ouvrir le modal avec l'image sélectionnée
+  const openModal = (index) => {
+    setSelectedImageIndex(index);
+    setModalOpen(true);
+  };
+
+  // Navigation dans le modal
+  const handlePrevious = () => {
+    setSelectedImageIndex(prev => Math.max(0, prev - 1));
+  };
+
+  const handleNext = () => {
+    setSelectedImageIndex(prev => Math.min(filteredProjects.length - 1, prev + 1));
+  };
+
   // Catégories pour le filtre
   const categories = [
     { id: "all", name: "Tous", icon: Sparkles, gradient: "from-blue-500 to-orange-500" },
     { id: "data-engineering", name: "Data Engineering", icon: Database, gradient: "from-blue-400 to-cyan-500" },
     { id: "data-science", name: "Data Science", icon: Brain, gradient: "from-orange-400 to-pink-500" },
-    { id: "deep-learning", name: "Deep Learning", icon: Network, gradient: "from-purple-500 to-red-500" },
     { id: "data-viz", name: "Data Viz", icon: PieChart, gradient: "from-green-400 to-teal-500" }
   ];
 
@@ -258,8 +378,8 @@ function Projects() {
             </h1>
 
             <p className="text-lg text-gray-600 max-w-2xl leading-relaxed">
-              Une sélection de projets data, de l'ingénierie des pipelines à l'IA médicale,
-              en passant par la visualisation interactive.
+              Une sélection de projets data, de l'ingénierie des pipelines à la visualisation interactive,
+              en passant par l'analyse prédictive.
             </p>
           </motion.div>
 
@@ -288,23 +408,19 @@ function Projects() {
         </div>
       </div>
 
-      {/* Grille des projets */}
+      {/* Grille des projets - Alignement 2 par 2 */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8"
         >
           {filteredProjects.map((project, index) => (
             <motion.div
               key={index}
               variants={cardVariants}
-              className={`
-                group cursor-pointer
-                ${project.title.includes("Pipeline Data Engineering – Databricks") ? 'lg:col-span-2 lg:row-span-1' : ''}
-                ${project.title.includes("Classification d'images médicales") ? 'lg:col-span-1' : ''}
-              `}
+              className="group"
               onHoverStart={() => setHoveredCard(index)}
               onHoverEnd={() => setHoveredCard(null)}
             >
@@ -313,18 +429,31 @@ function Projects() {
                 index={index}
                 isHovered={hoveredCard === index}
                 hasLink={!!project.link}
-                isNew={[3, 4, 5, 6].includes(index)}
+                isNew={index < 2}
+                onImageClick={() => openModal(index)}
               />
             </motion.div>
           ))}
         </motion.div>
       </div>
+
+      {/* Modal d'image */}
+      <ImageModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        image={modalImages[selectedImageIndex]?.image}
+        title={modalImages[selectedImageIndex]?.title}
+        currentIndex={selectedImageIndex}
+        totalImages={modalImages.length}
+        onPrevious={handlePrevious}
+        onNext={handleNext}
+      />
     </div>
   );
 }
 
-// Composant ProjectCard avec icônes Lucide
-const ProjectCard = ({ project, index, isHovered, hasLink = false, isNew = false }) => {
+// Composant ProjectCard avec images et icônes
+const ProjectCard = ({ project, index, isHovered, hasLink = false, isNew = false, onImageClick }) => {
   const handleClick = () => {
     if (hasLink && project.link) {
       window.open(project.link, '_blank');
@@ -335,7 +464,6 @@ const ProjectCard = ({ project, index, isHovered, hasLink = false, isNew = false
   const categoryIcons = {
     'data-engineering': Database,
     'data-science': Brain,
-    'deep-learning': Network,
     'data-viz': PieChart
   };
 
@@ -346,35 +474,47 @@ const ProjectCard = ({ project, index, isHovered, hasLink = false, isNew = false
       whileHover={{ y: -6 }}
       transition={{ duration: 0.2 }}
       className="relative h-full"
-      onClick={handleClick}
     >
       {/* Carte principale */}
       <div className="relative h-full bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden">
 
         {/* Barre de gradient supérieure */}
-        <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${project.gradient}`} />
+        <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${project.gradient} z-10`} />
 
-        {/* Badges */}
-        <div className="absolute top-4 right-4 z-10 flex gap-2">
-          {hasLink && (
-            <span className="px-3 py-1.5 bg-gradient-to-r from-blue-500 to-orange-500 text-white text-xs font-medium rounded-full shadow-lg flex items-center gap-1">
-              <Rocket size={12} />
-              À la une
-            </span>
-          )}
-            {/*
-          {isNew && (
-            <span className="px-3 py-1.5 bg-purple-500 text-white text-xs font-medium rounded-full shadow-lg flex items-center gap-1">
-              <Sparkles size={12} />
-              Nouveau
-            </span>
-          )} */}
+        {/* Image du projet - avec bouton de zoom */}
+        <div className="relative h-48 overflow-hidden group/image">
+          <img
+            src={project.image}
+            alt={project.title}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+          {/* Overlay gradient sur l'image */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+
+          {/* Bouton zoom */}
+          <motion.button
+            initial={{ opacity: 0, scale: 0.5 }}
+            whileHover={{ scale: 1.1 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.1 }}
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 bg-white/20 backdrop-blur-md hover:bg-white/30 rounded-full p-3 text-white transition-all duration-300"
+            onClick={(e) => {
+              e.stopPropagation();
+              onImageClick();
+            }}
+          >
+            <ZoomIn size={24} />
+          </motion.button>
+
+          {/* Badges sur l'image */}
+          <div className="absolute top-4 right-4 z-20 flex gap-2">
+          </div>
         </div>
 
-        <div className="p-6 h-full flex flex-col">
+        <div className="p-6 h-full flex flex-col" onClick={handleClick}>
           {/* En-tête avec icône et catégorie */}
           <div className="flex items-start justify-between mb-4">
-            <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${project.gradient} flex items-center justify-center text-white shadow-md`}>
+            <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${project.gradient} flex items-center justify-center text-white shadow-md -mt-8 border-4 border-white`}>
               <project.icon size={24} />
             </div>
             <span className="px-3 py-1 bg-gray-100 text-gray-600 text-xs font-medium rounded-full flex items-center gap-1">
