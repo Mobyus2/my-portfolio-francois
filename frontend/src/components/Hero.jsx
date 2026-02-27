@@ -328,7 +328,7 @@ const Hero = () => {
             {/* Réseaux sociaux */}
             <div className="flex items-center gap-6 pt-6">
               <motion.a
-                href="https://linkedin.com/in/francois-louis-marie-ntonga"
+                href="https://www.linkedin.com/in/francois-louis-marie-ntonga-7b982329b/"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ y: -3 }}
@@ -337,7 +337,7 @@ const Hero = () => {
                 <Linkedin size={24} />
               </motion.a>
               <motion.a
-                href="https://github.com/francoisntonga"
+                href="https://github.com/Mobyus2"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ y: -3 }}
