@@ -32,133 +32,187 @@ import {
   X,
   ZoomIn,
   ChevronLeft,
-  ChevronRight as ChevronRightIcon
+  ChevronRight as ChevronRightIcon,
+  TrendingUp as TrendingUpIcon,
+  DollarSign,
+  Users,
+  ShoppingCart,
+  BarChart,
+  Map,
+  Clock,
+  MessageCircle,
+  ThumbsUp,
+  ThumbsDown,
+  Star
 } from "lucide-react";
 
-// Import des images
+// Import des images (à remplacer par vos chemins d'images réels)
 import bankingImage from '../assets/banking_project.png';
 import weatherImage from '../assets/weather_project.png';
 import databricksImage from '../assets/databricks_project.png';
+import streamingImage from '../assets/streaming_project.png';
+// Les autres images si disponibles
 import churnImage from '../assets/churn_project.png';
 import performanceImage from '../assets/performance_project.png';
 
 const projects = [
   // PROJET 1 - Banking End-to-End Data Engineering
   {
-    title: "Banking End-to-End Data Engineering",
+    title: "Pipeline Bancaire Temps Réel",
     type: "Personnel",
-    description: "Pipeline de données bancaires temps réel avec CDC, Data Lake, Data Warehouse Cloud et visualisation Power BI pour une architecture Data moderne et scalable.",
+    description: "Un système intelligent qui capture automatiquement chaque transaction bancaire et la transforme en tableaux de bord pour piloter la performance commerciale et détecter les opportunités.",
+    businessValue: "Ce pipeline permet à une banque de suivre en temps réel l'activité de ses clients, d'identifier les comptes les plus actifs et d'optimiser ses stratégies commerciales avec une vision claire des dépôts vs retraits.",
     points: [
-      "Change Data Capture (CDC) avec Kafka & Debezium pour la capture temps réel des transactions bancaires",
-      "Data Lake avec MinIO (S3-compatible) stockant les données brutes au format Parquet",
-      "Data Warehouse Cloud sur Snowflake avec architecture RAW/STAGING/ANALYTICS",
-      "Transformations dbt avec gestion d'historique SCD Type 2 et modélisation star schema",
-      "Orchestration complète avec Airflow et industrialisation CI/CD via GitHub Actions",
-      "Dashboard interactif Power BI avec KPIs métier (clients actifs, volumes transactions, soldes moyens)"
+      "📊 Suivi en temps réel des clients actifs et des volumes de transactions",
+      "💰 Visualisation des soldes moyens et de la répartition des opérations",
+      "🔄 Conservation de l'historique complet pour analyser l'évolution des comportements",
+      "📈 Tableau de bord Power BI avec indicateurs clés pour la prise de décision",
+      "⚡ Automatisation complète : les données sont actualisées sans intervention manuelle",
+      "🔒 Architecture sécurisée comparable aux standards des grandes banques"
     ],
-    technologies: ["PostgreSQL", "Kafka", "Debezium", "MinIO", "Snowflake", "dbt", "Airflow", "Power BI", "GitHub Actions", "Docker", "Python", "CDC", "Parquet", "SCD2"],
+    technologies: ["PostgreSQL", "Kafka", "Debezium", "MinIO", "Snowflake", "dbt", "Airflow", "Power BI", "GitHub Actions", "Docker"],
     gradient: "from-indigo-500 to-cyan-500",
     icon: Database,
     color: "indigo",
-    metrics: ["Temps réel", "CDC", "SCD2", "Cloud Native"],
+    businessMetrics: ["Temps réel", "CDC", "SCD2", "Cloud Native"],
     bgPattern: "radial-gradient(circle at 20% 30%, rgba(99,102,241,0.05) 0%, transparent 50%)",
     link: "https://www.linkedin.com/posts/francois-louis-marie-ntonga-7b982329b_pipeline-data-engineering-end-to-end-ugcPost-7432020719179419649-N-r3?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEiPCr0BJYutV6DGpPs-hFdaMf39pxwKllQ",
     category: "data-engineering",
     featured: true,
-    image: bankingImage
+    image: bankingImage,
+    businessIcon: DollarSign
   },
 
   // PROJET 2 - Weather Data Pipeline with Airflow
   {
-    title: "Weather Data Pipeline - Airflow & dbt",
+    title: "Pipeline Météo Automatisé",
     type: "Personnel",
-    description: "Pipeline Data Engineering temps réel pour l'ingestion et la transformation de données météorologiques avec orchestration Airflow et visualisation Superset.",
+    description: "Un système qui collecte automatiquement les données météo toutes les minutes et les transforme en tableaux de bord dynamiques pour anticiper les conditions climatiques.",
+    businessValue: "Ce pipeline permet à une entreprise dépendante de la météo (agriculture, logistique, énergie) d'anticiper les conditions et d'optimiser ses opérations en temps réel.",
     points: [
-      "Ingestion temps réel via API Weatherstack avec script Python automatisé",
-      "Orchestration complète avec Airflow (DAGs ingestion + transformation)",
-      "Transformations SQL avec dbt (modèles, tests, documentation)",
-      "Base de données PostgreSQL pour le stockage des données brutes et transformées",
-      "Visualisation interactive avec Apache Superset et rafraîchissement automatique",
-      "Infrastructure conteneurisée avec Docker Compose (6 services interconnectés)"
+      "🌦️ Collecte automatique des données météo toutes les minutes sans intervention humaine",
+      "📊 Tableaux de bord dynamiques avec rafraîchissement automatique des prévisions",
+      "⚡ Architecture industrialisée : l'ensemble du système est conteneurisé et reproductible",
+      "🔄 Orchestration complète : ingestion et transformation enchaînées automatiquement",
+      "📈 Visualisations interactives pour une lecture intuitive des tendances climatiques",
+      "🚀 Prêt pour un déploiement en production avec des standards professionnels"
     ],
-    technologies: ["Airflow", "dbt", "PostgreSQL", "Docker", "Python", "API REST", "Superset", "SQL", "Weatherstack", "ELT", "DataOps"],
+    technologies: ["Airflow", "dbt", "PostgreSQL", "Docker", "Python", "API REST", "Superset", "SQL", "Weatherstack"],
     gradient: "from-teal-500 to-emerald-500",
     icon: Wind,
     color: "teal",
-    metrics: ["Temps réel", "Orchestré", "6 services", "Auto-refresh"],
+    businessMetrics: ["Temps réel", "Orchestré", "6 services", "Auto-refresh"],
     bgPattern: "radial-gradient(circle at 80% 70%, rgba(20,184,166,0.05) 0%, transparent 50%)",
     link: "https://www.linkedin.com/posts/francois-louis-marie-ntonga-7b982329b_pipeline-data-engineering-end-to-end-ugcPost-7430229688469315584-H-Dr?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEiPCr0BJYutV6DGpPs-hFdaMf39pxwKllQ",
     category: "data-engineering",
     featured: true,
-    image: weatherImage
+    image: weatherImage,
+    businessIcon: Cloud
   },
 
-  // PROJET 3 - Pipeline Data Engineering – Databricks
+  // PROJET 3 - Pipeline Data Engineering – Databricks (Ventes FMCG)
   {
-    title: "Pipeline Data Engineering – Databricks",
+    title: "Analyse des Ventes FMCG",
     type: "Personnel",
-    description: "Conception et industrialisation d'un pipeline Data Engineering end-en-end de l'ingestion des données sur Amazon S3 jusqu'à la restitution analytique.",
+    description: "Une plateforme complète qui consolide les données de ventes de deux entreprises après acquisition pour offrir une vision unifiée de la performance commerciale.",
+    businessValue: "Ce pipeline permet aux équipes commerciales et finance de piloter le chiffre d'affaires, d'identifier les produits et clients les plus rentables, et d'analyser les tendances de vente.",
     points: [
-      "Architecture Bronze / Silver / Gold, modélisation analytique en schéma en étoile",
-      "Traitements distribués avec Spark (Python, SQL)",
-      "Orchestration automatisée via Databricks Jobs",
-      "Dashboard Databricks et exploration avec Genie IA"
+      "📈 Suivi du chiffre d'affaires en temps réel : 105.34 B de revenus analysés",
+      "🏆 Identification des produits stars et des clients stratégiques (Top clients : FitnessWorld, FastTrack Sports)",
+      "📊 Analyse par canal de vente : 78% Retailer vs 20% Direct",
+      "📅 Détection des saisonnalités et pics d'activité (Q4 très fort)",
+      "🤖 Exploration des données en langage naturel via IA Genie",
+      "📱 Dashboard interactif accessible aux équipes métier sans compétences techniques"
     ],
-    technologies: ["Databricks", "Apache Spark", "Python", "SQL", "Amazon S3", "Lakehouse", "DataOps"],
+    technologies: ["Databricks", "Apache Spark", "Python", "SQL", "Amazon S3", "Lakehouse", "Genie IA"],
     gradient: "from-blue-400 to-orange-400",
-    icon: Settings,
+    icon: TrendingUpIcon,
     color: "blue",
-    metrics: ["100% Cloud Native", "24/7 Automatisé", "Temps réel"],
+    businessMetrics: ["105B+ CA", "+ de produits", "IA intégrée"],
     bgPattern: "radial-gradient(circle at 20% 30%, rgba(59,130,246,0.05) 0%, transparent 50%)",
     link: "https://www.linkedin.com/posts/francois-louis-marie-ntonga-7b982329b_projet-data-engineering-ugcPost-7426575551039143936-i750?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAEiPCr0BJYutV6DGpPs-hFdaMf39pxwKllQ",
     category: "data-engineering",
-    image: databricksImage
+    image: databricksImage,
+    businessIcon: ShoppingCart
   },
 
-  // PROJET 4 - Customer Churn Analytics Dashboard
+  // PROJET 4 - Streaming Reviews Pipeline with NLP
   {
-    title: "Customer Churn Analytics Dashboard",
+    title: "Analyse des Avis Clients en Temps Réel",
     type: "Personnel",
-    description: "Application data visant à analyser et anticiper le churn client dans le secteur bancaire.",
+    description: "Un pipeline intelligent qui analyse automatiquement des millions d'avis clients pour comprendre instantanément le ressenti des utilisateurs et détecter les tendances.",
+    businessValue: "Ce système permet aux entreprises de surveiller en temps réel la satisfaction client, d'identifier rapidement les problèmes et de prendre des décisions pour améliorer leurs services.",
     points: [
-      "Analyse exploratoire, feature engineering et modélisation prédictive",
-      "Dashboard interactif avec Streamlit (KPI, segmentation, insights)",
-      "Prédictions en temps réel et par lot",
-      "Recommandations business et projections ROI"
+      "🧠 Analyse automatique du sentiment des avis : 71.4% positifs, 26.98% négatifs",
+      "📊 137 573 avis traités et enrichis automatiquement",
+      "🗺️ Visualisation géographique des avis par ville et par entreprise",
+      "⏱️ Détection en temps réel des pics d'insatisfaction pour réagir immédiatement",
+      "📈 Tableau de bord Kibana pour suivre les entreprises les plus commentées",
+      "💡 Architecture résiliente qui continue de fonctionner même en cas de panne"
+    ],
+    technologies: ["Apache Kafka", "Apache Spark", "MongoDB Atlas", "Elasticsearch", "Kibana", "Confluent Cloud", "Hugging Face", "DistilBERT", "NLP", "Python"],
+    gradient: "from-purple-500 to-pink-500",
+    icon: MessageCircle,
+    color: "purple",
+    businessMetrics: ["137K+ avis", "71.4% positifs", "Temps réel"],
+    bgPattern: "radial-gradient(circle at 30% 40%, rgba(168,85,247,0.05) 0%, transparent 50%)",
+    link: "#", // À remplacer par votre lien
+    category: "data-engineering",
+    featured: true,
+    image: streamingImage,
+    businessIcon: ThumbsUp
+  },
+
+  // PROJET 5 - Customer Churn Analytics Dashboard
+  {
+    title: "Prédiction du Risque de Perte Clients",
+    type: "Personnel",
+    description: "Un outil d'analyse qui identifie les clients susceptibles de quitter la banque et permet d'agir avant qu'ils ne partent.",
+    businessValue: "Ce système permet à une banque de réduire le taux d'attrition en identifiant les clients à risque et en prenant des mesures préventives ciblées.",
+    points: [
+      "🎯 Précision de 89% dans l'identification des clients à risque de départ",
+      "📊 Dashboard interactif pour visualiser les segments clients les plus vulnérables",
+      "💡 Recommandations business avec un ROI estimé à +35%",
+      "⚡ Prédictions en temps réel et par lot selon les besoins",
+      "📈 Analyse des facteurs clés qui poussent les clients à partir",
+      "🛡️ Stratégies de rétention personnalisées basées sur les données"
     ],
     technologies: ["Random Forest", "Streamlit", "Python", "Scikit-learn", "Power BI"],
     gradient: "from-orange-400 to-blue-400",
-    icon: BarChart3,
+    icon: Users,
     color: "orange",
-    metrics: ["ROI +35%", "Précision 89%", "Temps réel"],
+    businessMetrics: ["ROI +35%", "Précision 89%", "Temps réel"],
     bgPattern: "radial-gradient(circle at 80% 70%, rgba(249,115,22,0.05) 0%, transparent 50%)",
     link: "https://github.com/francoisntonga/customer-churn-analytics",
     category: "data-science",
-    image: churnImage
+    image: churnImage,
+    businessIcon: Users
   },
 
-  // PROJET 5 - Dashboard de Pilotage Performance Commerciale
+  // PROJET 6 - Dashboard de Pilotage Performance Commerciale
   {
-    title: "Dashboard de Pilotage Performance Commerciale",
+    title: "Pilotage de la Performance Commerciale",
     type: "Personnel",
-    description: "Solution complète d'analyse et d'optimisation des ventes avec Power BI pour une vision 360° de la performance commerciale.",
+    description: "Un tableau de bord complet pour analyser les ventes, optimiser les performances et réduire les commandes annulées.",
+    businessValue: "Cet outil permet aux équipes commerciales de visualiser leur performance en temps réel et d'identifier les axes d'amélioration pour augmenter le chiffre d'affaires.",
     points: [
-      "Ingestion et préparation de données de ventes (CSV) via Power Query",
-      "Nettoyage et transformation avancée des données",
-      "Création de KPIs stratégiques : CA total, panier moyen, taux d'annulation (25%)",
-      "Data modeling et création de mesures DAX complexes",
-      "Analyse des tendances mensuelles et trimestrielles",
-      "Identification d'opportunités d'optimisation des commandes annulées"
+      "📊 Analyse du chiffre d'affaires total et du panier moyen des clients",
+      "⚠️ Identification des causes d'annulation (taux de 25%) pour les réduire",
+      "📅 Suivi des tendances mensuelles et trimestrielles de vente",
+      "💡 Création de KPIs stratégiques pour piloter l'activité",
+      "🎯 Visualisation claire des opportunités d'optimisation",
+      "📱 Interface intuitive accessible à tous les managers"
     ],
     technologies: ["Power BI", "Power Query", "DAX", "Data Modeling", "CSV", "Business Intelligence"],
     gradient: "from-blue-400 to-orange-400",
-    icon: TrendingUp,
+    icon: BarChart,
     color: "blue",
-    metrics: ["Taux annulation 25%", "CA analysé", "Optimisation ventes"],
+    businessMetrics: ["Taux annulation 25%", "CA analysé", "Optimisation"],
     bgPattern: "radial-gradient(circle at 60% 40%, rgba(59,130,246,0.05) 0%, transparent 50%)",
     link: "https://github.com/francoisntonga/performance-commerciale-dashboard",
     category: "data-viz",
-    image: performanceImage
+    image: performanceImage,
+    businessIcon: TrendingUpIcon
   }
 ];
 
@@ -378,8 +432,8 @@ function Projects() {
             </h1>
 
             <p className="text-lg text-gray-600 max-w-2xl leading-relaxed">
-              Une sélection de projets data, de l'ingénierie des pipelines à la visualisation interactive,
-              en passant par l'analyse prédictive.
+              Des solutions data qui transforment les données brutes en décisions stratégiques
+              pour améliorer la performance et la satisfaction client.
             </p>
           </motion.div>
 
@@ -468,6 +522,7 @@ const ProjectCard = ({ project, index, isHovered, hasLink = false, isNew = false
   };
 
   const CategoryIcon = categoryIcons[project.category];
+  const BusinessIcon = project.businessIcon || TrendingUpIcon;
 
   return (
     <motion.div
@@ -505,10 +560,6 @@ const ProjectCard = ({ project, index, isHovered, hasLink = false, isNew = false
           >
             <ZoomIn size={24} />
           </motion.button>
-
-          {/* Badges sur l'image */}
-          <div className="absolute top-4 right-4 z-20 flex gap-2">
-          </div>
         </div>
 
         <div className="p-6 h-full flex flex-col" onClick={handleClick}>
@@ -519,9 +570,8 @@ const ProjectCard = ({ project, index, isHovered, hasLink = false, isNew = false
             </div>
             <span className="px-3 py-1 bg-gray-100 text-gray-600 text-xs font-medium rounded-full flex items-center gap-1">
               <CategoryIcon size={12} />
-              {project.category.split('-').map(word =>
-                word.charAt(0).toUpperCase() + word.slice(1)
-              ).join(' ')}
+              {project.category === 'data-engineering' ? 'Data Engineering' :
+               project.category === 'data-science' ? 'Data Science' : 'Data Viz'}
             </span>
           </div>
 
@@ -530,14 +580,24 @@ const ProjectCard = ({ project, index, isHovered, hasLink = false, isNew = false
             {project.title}
           </h3>
 
-          {/* Description */}
-          <p className="text-sm text-gray-600 mb-4 line-clamp-2">
+          {/* Description courte */}
+          <p className="text-sm text-gray-600 mb-3">
             {project.description}
           </p>
 
-          {/* Métriques */}
+          {/* Valeur business - NOUVEAU */}
+          <div className="mb-4 p-3 bg-blue-50 rounded-lg border-l-4 border-blue-500">
+            <div className="flex items-start gap-2">
+              <BusinessIcon size={18} className="text-blue-600 flex-shrink-0 mt-0.5" />
+              <p className="text-xs text-gray-700">
+                <span className="font-semibold text-blue-700">Impact business :</span> {project.businessValue}
+              </p>
+            </div>
+          </div>
+
+          {/* Métriques business */}
           <div className="flex flex-wrap gap-2 mb-4">
-            {project.metrics?.map((metric, i) => (
+            {project.businessMetrics?.map((metric, i) => (
               <span
                 key={i}
                 className="px-2.5 py-1 bg-gray-50 text-gray-700 text-xs font-medium rounded-md border border-gray-100"
@@ -547,7 +607,7 @@ const ProjectCard = ({ project, index, isHovered, hasLink = false, isNew = false
             ))}
           </div>
 
-          {/* Points clés */}
+          {/* Points clés (simplifiés) */}
           <ul className="space-y-2 mb-4 flex-grow">
             {project.points.slice(0, 3).map((point, i) => (
               <li key={i} className="flex items-start gap-2 text-xs text-gray-600">
@@ -557,7 +617,7 @@ const ProjectCard = ({ project, index, isHovered, hasLink = false, isNew = false
             ))}
             {project.points.length > 3 && (
               <li className="text-xs text-gray-400 ml-2">
-                +{project.points.length - 3} autres points
+                +{project.points.length - 3} autres bénéfices
               </li>
             )}
           </ul>
