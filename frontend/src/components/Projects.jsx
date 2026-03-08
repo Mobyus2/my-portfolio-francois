@@ -83,7 +83,35 @@ const projects = [
     businessIcon: DollarSign
   },
 
-  // PROJET 2 - Weather Data Pipeline with Airflow
+
+   // PROJET 2 - Streaming Reviews Pipeline with NLP
+  {
+    title: "Analyse des Avis Clients en Temps Réel",
+    type: "Personnel",
+    description: "Un pipeline intelligent qui analyse automatiquement des millions d'avis clients pour comprendre instantanément le ressenti des utilisateurs et détecter les tendances.",
+    businessValue: "Ce système permet aux entreprises de surveiller en temps réel la satisfaction client, d'identifier rapidement les problèmes et de prendre des décisions pour améliorer leurs services.",
+    points: [
+      "🧠 Analyse automatique du sentiment des avis : 71.4% positifs, 26.98% négatifs",
+      "📊 137 573 avis traités et enrichis automatiquement",
+      "🗺️ Visualisation géographique des avis par ville et par entreprise",
+      "⏱️ Détection en temps réel des pics d'insatisfaction pour réagir immédiatement",
+      "📈 Tableau de bord Kibana pour suivre les entreprises les plus commentées",
+      "💡 Architecture résiliente qui continue de fonctionner même en cas de panne"
+    ],
+    technologies: ["Apache Kafka", "Apache Spark", "MongoDB Atlas", "Elasticsearch", "Kibana", "Confluent Cloud", "Hugging Face", "DistilBERT", "NLP", "Python"],
+    gradient: "from-purple-500 to-pink-500",
+    icon: MessageCircle,
+    color: "purple",
+    businessMetrics: ["137K+ avis", "71.4% positifs", "Temps réel"],
+    bgPattern: "radial-gradient(circle at 30% 40%, rgba(168,85,247,0.05) 0%, transparent 50%)",
+    link: "#", // À remplacer par votre lien
+    category: "data-engineering",
+    featured: true,
+    image: streamingImage,
+    businessIcon: ThumbsUp
+  },
+
+  // PROJET 3 - Weather Data Pipeline with Airflow
   {
     title: "Pipeline Météo Automatisé",
     type: "Personnel",
@@ -110,7 +138,7 @@ const projects = [
     businessIcon: Cloud
   },
 
-  // PROJET 3 - Pipeline Data Engineering – Databricks (Ventes FMCG)
+  // PROJET 4 - Pipeline Data Engineering – Databricks (Ventes FMCG)
   {
     title: "Analyse des Ventes FMCG",
     type: "Personnel",
@@ -136,32 +164,7 @@ const projects = [
     businessIcon: ShoppingCart
   },
 
-  // PROJET 4 - Streaming Reviews Pipeline with NLP
-  {
-    title: "Analyse des Avis Clients en Temps Réel",
-    type: "Personnel",
-    description: "Un pipeline intelligent qui analyse automatiquement des millions d'avis clients pour comprendre instantanément le ressenti des utilisateurs et détecter les tendances.",
-    businessValue: "Ce système permet aux entreprises de surveiller en temps réel la satisfaction client, d'identifier rapidement les problèmes et de prendre des décisions pour améliorer leurs services.",
-    points: [
-      "🧠 Analyse automatique du sentiment des avis : 71.4% positifs, 26.98% négatifs",
-      "📊 137 573 avis traités et enrichis automatiquement",
-      "🗺️ Visualisation géographique des avis par ville et par entreprise",
-      "⏱️ Détection en temps réel des pics d'insatisfaction pour réagir immédiatement",
-      "📈 Tableau de bord Kibana pour suivre les entreprises les plus commentées",
-      "💡 Architecture résiliente qui continue de fonctionner même en cas de panne"
-    ],
-    technologies: ["Apache Kafka", "Apache Spark", "MongoDB Atlas", "Elasticsearch", "Kibana", "Confluent Cloud", "Hugging Face", "DistilBERT", "NLP", "Python"],
-    gradient: "from-purple-500 to-pink-500",
-    icon: MessageCircle,
-    color: "purple",
-    businessMetrics: ["137K+ avis", "71.4% positifs", "Temps réel"],
-    bgPattern: "radial-gradient(circle at 30% 40%, rgba(168,85,247,0.05) 0%, transparent 50%)",
-    link: "#", // À remplacer par votre lien
-    category: "data-engineering",
-    featured: true,
-    image: streamingImage,
-    businessIcon: ThumbsUp
-  },
+
 
   // PROJET 5 - Customer Churn Analytics Dashboard
   {
