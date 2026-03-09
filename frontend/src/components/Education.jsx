@@ -42,15 +42,14 @@ const education = [
   }
 ];
 
-// NOUVEAU : Section Certifications
+// NOUVEAU : Section Certifications avec logos officiels
 const certifications = [
   {
     title: "Agile Scrum Master",
     issuer: "Agile Certification",
-    date: "2024",
     description: "Maîtrise de la méthodologie Agile et gestion de projets Scrum",
     gradient: "from-green-400 to-emerald-500",
-    icon: "⚡",
+    icon: "https://upload.wikimedia.org/wikipedia/commons/d/d3/Scrum_Master_Certification_logo.svg",
     color: "green",
     competencies: ["Scrum", "Agile", "Sprints", "Daily Stand-up", "Retrospectives"],
     image: agileCert,
@@ -59,10 +58,9 @@ const certifications = [
   {
     title: "AWS Application Migration Service (AWS-MGN)",
     issuer: "Amazon Web Services",
-    date: "2024",
     description: "Migration d'applications vers AWS avec minimisation des temps d'arrêt",
     gradient: "from-orange-400 to-yellow-500",
-    icon: "☁️",
+    icon: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg",
     color: "orange",
     competencies: ["AWS Migration", "Cloud Computing", "Lift-and-Shift", "Réplication", "Cutover"],
     image: awsCert,
@@ -71,10 +69,9 @@ const certifications = [
   {
     title: "Scaling with Google Cloud Operations",
     issuer: "Google Cloud",
-    date: "2024",
     description: "Gestion des opérations cloud à grande échelle sur Google Cloud Platform",
     gradient: "from-blue-400 to-cyan-500",
-    icon: "📊",
+    icon: "https://upload.wikimedia.org/wikipedia/commons/5/51/Google_Cloud_logo.svg",
     color: "blue",
     competencies: ["Google Cloud", "Monitoring", "Scaling", "Operations", "SRE"],
     image: googleCert,
@@ -386,7 +383,7 @@ function Education() {
               </div>
             </div>
 
-            {/* NOUVEAU : Section Certifications */}
+            {/* NOUVEAU : Section Certifications avec logos */}
             <div className="mt-32">
               <motion.h2
                 initial={{ opacity: 0, x: -30 }}
@@ -452,8 +449,18 @@ function Education() {
                       {/* Contenu */}
                       <div className="p-6">
                         <div className="flex items-start gap-3 mb-3">
-                          <div className={`w-10 h-10 rounded-lg bg-gradient-to-r ${cert.gradient} flex items-center justify-center text-xl shadow-md`}>
-                            {cert.icon}
+                          {/* Logo officiel */}
+                          <div className="w-10 h-10 rounded-lg bg-white flex items-center justify-center p-1.5 shadow-sm border border-gray-200">
+                            <img
+                              src={cert.icon}
+                              alt={`${cert.issuer} logo`}
+                              className="w-full h-full object-contain"
+                              onError={(e) => {
+                                // Fallback en cas d'erreur de chargement
+                                e.target.style.display = 'none';
+                                e.target.parentElement.innerHTML = cert.icon.charAt(0);
+                              }}
+                            />
                           </div>
                           <div>
                             <h3 className="text-lg font-bold text-gray-900 mb-1 group-hover:bg-gradient-to-r group-hover:from-green-600 group-hover:to-blue-500 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
@@ -466,11 +473,6 @@ function Education() {
                         <p className="text-sm text-gray-600 mb-4 line-clamp-2">
                           {cert.description}
                         </p>
-
-                        {/* Date */}
-                        <div className="inline-block px-3 py-1 bg-gray-100 rounded-lg text-xs font-medium text-gray-700 mb-4">
-                          📅 Obtenue en {cert.date}
-                        </div>
 
                         {/* Compétences */}
                         <div className="border-t border-gray-100 pt-4">
