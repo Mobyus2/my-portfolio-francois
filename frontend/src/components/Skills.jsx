@@ -664,7 +664,7 @@ const Skills = () => {
             </div>
             <div className="flex items-center gap-2">
               <span className="w-3 h-3 bg-orange-500 rounded-full" />
-              <span className="text-sm font-medium text-gray-700">Anglais: B1</span>
+              <span className="text-sm font-medium text-gray-700">Anglais: B2</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="px-3 py-1.5 bg-gradient-to-r from-blue-100 to-orange-100 rounded-full text-xs font-medium text-gray-700">
