@@ -104,7 +104,7 @@ const projects = [
     color: "purple",
     businessMetrics: ["137K+ avis", "71.4% positifs", "Temps réel"],
     bgPattern: "radial-gradient(circle at 30% 40%, rgba(168,85,247,0.05) 0%, transparent 50%)",
-    link: "#", // À remplacer par votre lien
+    link: "https://www.linkedin.com/posts/francois-louis-marie-ntonga-7b982329b_pipepline-data-engineering-end-to-end-ugcPost-7436720862646505472-jtUV?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEiPCr0BJYutV6DGpPs-hFdaMf39pxwKllQ", // À remplacer par votre lien
     category: "data-engineering",
     featured: true,
     image: streamingImage,
@@ -186,7 +186,7 @@ const projects = [
     color: "orange",
     businessMetrics: ["ROI +35%", "Précision 89%", "Temps réel"],
     bgPattern: "radial-gradient(circle at 80% 70%, rgba(249,115,22,0.05) 0%, transparent 50%)",
-    link: "https://github.com/francoisntonga/customer-churn-analytics",
+    link: "",
     category: "data-science",
     image: churnImage,
     businessIcon: Users
@@ -212,7 +212,7 @@ const projects = [
     color: "blue",
     businessMetrics: ["Taux annulation 25%", "CA analysé", "Optimisation"],
     bgPattern: "radial-gradient(circle at 60% 40%, rgba(59,130,246,0.05) 0%, transparent 50%)",
-    link: "https://github.com/francoisntonga/performance-commerciale-dashboard",
+    link: "",
     category: "data-viz",
     image: performanceImage,
     businessIcon: TrendingUpIcon
