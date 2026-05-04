@@ -147,7 +147,7 @@ const Footer = () => {
             </div>
 
             <p className="text-gray-600 text-sm leading-relaxed">
-              Data Engineer & Scientist passionné par l'innovation et la transformation data.
+              Data Engineer & Analyst passionné par l'innovation et la transformation data.
               Basé à Paris, disponible pour de nouvelles opportunités.
             </p>
 

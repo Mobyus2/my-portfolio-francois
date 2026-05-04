@@ -7,39 +7,7 @@ import awsCert from '../assets/certifications/AWS_Application_Migration_Service_
 import googleCert from '../assets/certifications/Certificate_Scaling _With_Google_cloud_Operations.jpg';
 
 const education = [
-  {
-    degree: "Master 1 en Informatique & Science des données",
-    institution: "ESTIAM Paris",
-    period: "Septembre 2025 - En Cours",
-    description: "Formation approfondie en science des données et intelligence artificielle",
-    gradient: "from-blue-400 to-orange-400",
-    icon: "🎓",
-    color: "blue",
-    competencies: ["Machine Learning", "Big Data", "Data Science", "Python", "SQL"],
-    type: "Master"
-  },
-  {
-    degree: "Master 2 en Intelligence Artificielle et Big Data",
-    institution: "Keyce Informatique",
-    period: "2023 - 2025",
-    description: "Spécialisation en IA et traitement massif de données",
-    gradient: "from-orange-400 to-blue-400",
-    icon: "🤖",
-    color: "orange",
-    competencies: ["IA", "Deep Learning", "Big Data", "Cloud Computing", "Data Engineering"],
-    type: "Master"
-  },
-  {
-    degree: "Licence professionnelle en administration et sécurité réseau",
-    institution: "ISSAM",
-    period: "2022 - 2023",
-    description: "Formation en administration système et sécurité informatique",
-    gradient: "from-blue-400 to-orange-400",
-    icon: "🔐",
-    color: "blue",
-    competencies: ["Réseaux", "Sécurité", "Administration", "Linux", "TCP/IP"],
-    type: "Licence"
-  }
+
 ];
 
 // NOUVEAU : Section Certifications avec logos officiels
@@ -81,24 +49,7 @@ const certifications = [
 
 // Données pour la timeline verticale
 const timelineEvents = [
-  {
-    year: "2025 - Présent",
-    title: "Master 1",
-    institution: "ESTIAM Paris",
-    gradient: "from-blue-400 to-orange-400"
-  },
-  {
-    year: "2023 - 2025",
-    title: "Master 2",
-    institution: "Keyce Informatique",
-    gradient: "from-orange-400 to-blue-400"
-  },
-  {
-    year: "2022 - 2023",
-    title: "Licence Pro",
-    institution: "ISSAM",
-    gradient: "from-blue-400 to-orange-400"
-  }
+
 ];
 
 // Timeline pour les certifications
@@ -188,14 +139,7 @@ function Education() {
             className="text-center"
           >
             {/* Badge académique */}
-            <motion.span
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2 }}
-              className="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-blue-100 to-orange-100 text-gray-800 text-sm font-medium mb-6"
-            >
-              ✦ Parcours d'excellence
-            </motion.span>
+
 
             {/* Titre principal avec effet */}
             <div className="relative inline-block">
@@ -204,11 +148,11 @@ function Education() {
                 className="text-6xl md:text-7xl font-black mb-4"
               >
                 <span className="bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
-                  Formation
+
                 </span>
                 <br />
                 <span className="bg-gradient-to-r from-blue-600 to-orange-500 bg-clip-text text-transparent relative">
-                  & Certifications
+                  Certifications
                   <motion.span
                     animate={floatAnimation}
                     className="absolute -right-12 -top-6 text-4xl"
@@ -225,7 +169,7 @@ function Education() {
               transition={{ delay: 0.4 }}
               className="text-xl text-gray-600 max-w-2xl mx-auto mt-6 leading-relaxed"
             >
-              Diplômes académiques et certifications professionnelles pour maîtriser
+              Certifications professionnelles pour maîtriser
               les <span className="font-semibold text-blue-600">technologies cloud</span> et les <span className="font-semibold text-orange-600">méthodes Agiles</span>
             </motion.p>
 
@@ -244,7 +188,7 @@ function Education() {
                     : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                 }`}
               >
-                <span className="relative z-10">Vue Cartes</span>
+                <span className="relative z-10"></span>
               </button>
               <button
                 onClick={() => setViewMode("timeline")}
@@ -254,7 +198,7 @@ function Education() {
                     : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                 }`}
               >
-                <span className="relative z-10">Vue Timeline</span>
+                <span className="relative z-10"></span>
               </button>
             </motion.div>
           </motion.div>
@@ -273,10 +217,7 @@ function Education() {
                 viewport={{ once: true }}
                 className="text-3xl font-bold text-gray-900 mb-8 flex items-center gap-3"
               >
-                <span className="text-4xl">🎓</span>
-                <span className="bg-gradient-to-r from-blue-600 to-orange-500 bg-clip-text text-transparent">
-                  Diplômes
-                </span>
+
                 <div className="flex-1 h-px bg-gradient-to-r from-blue-200 to-orange-200 ml-4" />
               </motion.h2>
 

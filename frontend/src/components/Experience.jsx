@@ -3,13 +3,27 @@ import { useState } from "react";
 
 const experiences = [
   {
-    title: "Stagiaire Data Engineer",
-    company: "Programme Elargi de Vaccination",
-    period: "Mars 2025 - Aout 2025",
+    title: "Data Engineer",
+    company: "Endesa",
+    period: "Mars 2026 - Août 2026",
     achievements: [
-      "Conception pipelines data avec Kafka + Databricks → réduction temps collecte de 40%",
-      "Implémentation ETL/ELT avec dbt et Snowflake → amélioration performances requêtes de 30%",
-      "Orchestration workflows via Databricks Jobs → réduction erreurs données manquantes de 25%"
+      "📊 Data Engineering & Pipeline Development, Data Modeling & Visualisations (PowerBI, KPIs) → amélioration du suivi des KPIs et réduction du temps d'analyse pour les équipes métier de 45%",
+      "⚙️ Automatisation des pipelines (Airflow, Python, SQL, DBT, Databricks) → réduction des tâches manuelles de 60% et accélération des traitements de 3x",
+      "🔍 Data Quality, Monitoring & Operations (GitHub CI/CD, Grafana & Prometheus, Data Ops) → fiabilisation des données à 99.5% et réduction des incidents data de 70%"
+    ],
+    technologies: ["Airflow", "Python", "SQL", "dbt", "Databricks", "PowerBI", "GitHub Actions", "Grafana", "Prometheus", "DataOps"],
+    gradient: "from-blue-600 to-cyan-500",
+    icon: "🚀",
+    color: "engineer"
+  },
+  {
+    title: "Data Engineer",
+    company: "Programme Elargi de Vaccination",
+    period: "Mars 2025 - Août 2025",
+    achievements: [
+      "📡 Conception pipelines data avec Kafka + Databricks → réduction temps collecte de 40%",
+      "🔄 Implémentation ETL/ELT avec dbt et Snowflake → amélioration performances requêtes de 30%",
+      "⚡ Orchestration workflows via Databricks Jobs → réduction erreurs données manquantes de 25%"
     ],
     technologies: ["Apache Kafka", "Databricks", "Spark", "dbt", "Snowflake", "SQL"],
     gradient: "from-orange-400 to-blue-400",
@@ -17,42 +31,56 @@ const experiences = [
     color: "orange"
   },
   {
-    title: "Stagiaire Data Scientist",
+    title: "Data Analyst",
     company: "CCA-Bank",
     period: "Janvier 2024 - Janvier 2025",
     achievements: [
-      "Analyse de données pour identifier des tendances et appuyer la stratégie",
-      "Collaboration avec équipes marketing et finances pour fournir des insights exploitables",
-      "Développement d'un modèle prédictif → augmentation de 15 % des ventes",
-      "Création de tableaux de bord interactifs et automatisation ETL"
+      "📈 Analyse de données pour détecter des tendances business (+15% performance). ",
+      "🤝 Nettoyage & structuration via SQL/Python, réduisant les erreurs de 55%.",
+      "📊 Insights via un dashboards Power BI, améliorant l’efficacité opérationnelle de 35%."
     ],
-    technologies: ["Python", "Pandas", "NumPy", "SQL", "Scikit-learn", "PowerBI", "Streamlit", "Airflow"],
-    gradient: "from-blue-400 to-orange-400",
-    icon: "🧠",
-    color: "blue"
-  },
-  {
-    title: "Stagiaire Data Analyst",
-    company: "INCC",
-    period: "Janvier 2023 - Novembre 2023",
-    achievements: [
-      "Nettoyage, analyse exploratoire et sélection de variables clés",
-      "Entraînement modèles supervisés (Random Forest, XGBoost)",
-      "Conception modèle ML prédictif pour conversions clients",
-      "Création dashboard suivi scores conversion"
-    ],
-    technologies: ["Python", "Pandas", "NumPy", "Matplotlib", "Seaborn", "Scikit-learn", "XGBoost", "MLflow", "Power BI"],
+    technologies: ["Python", "Pandas", "SQL", "PowerBI"],
     gradient: "from-blue-400 to-orange-400",
     icon: "📊",
-    color: "blue"
+    color: "analyst"
   }
 ];
 
 // Positions alternées pour un effet plus dynamique
-const positions = ["left", "right", "left"];
+const positions = ["right", "left", "right", "left"];
 
 function Experience() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
+
+  // Couleurs personnalisées pour les différents types de postes
+  const getColorClasses = (colorType) => {
+    switch(colorType) {
+      case 'engineer':
+        return {
+          bg: "from-blue-600 to-cyan-500",
+          badge: "bg-blue-100 text-blue-700",
+          text: "from-blue-600 to-cyan-500"
+        };
+      case 'analyst':
+        return {
+          bg: "from-emerald-500 to-teal-500",
+          badge: "bg-emerald-100 text-emerald-700",
+          text: "from-emerald-600 to-teal-500"
+        };
+      case 'orange':
+        return {
+          bg: "from-orange-400 to-blue-400",
+          badge: "bg-orange-100 text-orange-700",
+          text: "from-orange-500 to-blue-500"
+        };
+      default:
+        return {
+          bg: "from-blue-400 to-orange-400",
+          badge: "bg-blue-100 text-blue-700",
+          text: "from-blue-600 to-orange-500"
+        };
+    }
+  };
 
   return (
     <div className="min-h-screen bg-white overflow-hidden">
@@ -99,7 +127,7 @@ function Experience() {
               transition={{ duration: 5, repeat: Infinity }}
               className="text-6xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-blue-600 via-orange-500 to-blue-600 bg-[length:200%] bg-clip-text text-transparent inline-block"
             >
-              Expérience
+              Parcours Professionnel
             </motion.h1>
             <span className="text-7xl ml-2 inline-block animate-bounce">💼</span>
 
@@ -110,7 +138,7 @@ function Experience() {
               transition={{ delay: 0.3 }}
               className="text-xl text-gray-600 max-w-2xl mt-4"
             >
-              Un parcours construit étape par étape, de l'analyse à l'engineering
+              De l'analyse de données à l'engineering data, un parcours axé sur l'impact business
             </motion.p>
           </motion.div>
         </div>
@@ -118,10 +146,14 @@ function Experience() {
 
       {/* Section Expérience avec disposition originale */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        {/* Timeline décorative */}
+        <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-0.5 h-[85%] bg-gradient-to-b from-blue-200 via-orange-200 to-blue-200 rounded-full" />
+
         {/* Grille créative */}
-        <div className="grid grid-cols-1 gap-8 md:gap-12">
+        <div className="grid grid-cols-1 gap-8 md:gap-12 relative">
           {experiences.map((exp, index) => {
             const isLeft = positions[index] === "left";
+            const colorClasses = getColorClasses(exp.color);
 
             return (
               <motion.div
@@ -213,10 +245,16 @@ function Experience() {
                         <h2 className="text-3xl font-bold text-gray-900 mb-2 group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-orange-500 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
                           {exp.title}
                         </h2>
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-2 flex-wrap">
                           <span className="text-lg font-medium text-gray-700">{exp.company}</span>
-                          <span className="px-2 py-1 text-xs bg-gray-100 rounded-full text-gray-600">
-                            {exp.color === 'blue' ? 'Data Science' : 'Data Engineering'}
+                          <span className={`px-2 py-1 text-xs rounded-full ${
+                            exp.color === 'engineer' ? 'bg-blue-100 text-blue-700' :
+                            exp.color === 'analyst' ? 'bg-emerald-100 text-emerald-700' :
+                            'bg-orange-100 text-orange-700'
+                          }`}>
+                            {exp.title.includes('Engineer') ? 'Data Engineering' :
+                             exp.title.includes('Analyst') ? 'Data Analytics' :
+                             'Data Science'}
                           </span>
                         </div>
                       </div>
@@ -255,8 +293,8 @@ function Experience() {
 
                       {/* Technologies en nuage de mots */}
                       <div className="relative pt-4 border-t border-gray-100">
-                        <p className="text-xs uppercase tracking-wider text-gray-400 mb-3">
-                          Stack technique
+                        <p className="text-xs uppercase tracking-wider text-gray-400 mb-3 flex items-center gap-2">
+                          <span>🛠️</span> Stack technique
                         </p>
                         <div className="flex flex-wrap gap-2">
                           {exp.technologies.map((tech, i) => (
@@ -265,7 +303,8 @@ function Experience() {
                               whileHover={{
                                 scale: 1.1,
                                 y: -2,
-                                backgroundColor: exp.color === 'blue' ? '#e6f0ff' : '#fff0e6'
+                                backgroundColor: exp.color === 'engineer' ? '#e6f0ff' :
+                                               exp.color === 'analyst' ? '#e6fffa' : '#fff0e6'
                               }}
                               className="px-4 py-2 text-sm font-medium rounded-full bg-gray-50 text-gray-700 border border-gray-200 hover:border-transparent hover:shadow-md transition-all duration-300 cursor-default"
                             >
@@ -294,7 +333,7 @@ function Experience() {
         >
           <div className="inline-flex items-center gap-4">
             <div className="w-12 h-0.5 bg-gradient-to-r from-blue-400 to-transparent" />
-            <span className="text-gray-400 font-medium">Continuez à explorer</span>
+            <span className="text-gray-400 font-medium">📅 Toujours en apprentissage</span>
             <div className="w-12 h-0.5 bg-gradient-to-r from-transparent to-orange-400" />
           </div>
           <motion.div

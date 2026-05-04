@@ -18,7 +18,9 @@ import {
   LineChart,
   Cpu,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
+  GitBranch,
+  Container
 } from "lucide-react";
 
 const Skills = () => {
@@ -31,6 +33,13 @@ const Skills = () => {
 
   // Catégories de compétences
   const categories = [
+    { id: "all", name: "Toutes", icon: Sparkles, gradient: "from-blue-500 to-orange-500" },
+    { id: "languages", name: "Langages", icon: Code2, gradient: "from-blue-400 to-cyan-500" },
+    { id: "databases", name: "Bases de données", icon: Database, gradient: "from-green-400 to-emerald-500" },
+    { id: "bigdata", name: "Big Data", icon: Server, gradient: "from-orange-400 to-red-500" },
+    { id: "cloud", name: "Cloud & DevOps", icon: Cloud, gradient: "from-purple-400 to-pink-500" },
+    { id: "viz", name: "Data Viz", icon: BarChart3, gradient: "from-indigo-400 to-blue-500" },
+    { id: "ml", name: "Machine Learning", icon: Brain, gradient: "from-pink-400 to-rose-500" }
   ];
 
   // URLs des logos pour chaque technologie
@@ -40,36 +49,50 @@ const Skills = () => {
     SQL: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
     Flask: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg",
     React: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+    Java: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
+    Scala: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scala/scala-original.svg",
 
     // Bases de données
     PostgreSQL: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
     MongoDB: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
     Firebase: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg",
     Snowflake: "https://www.vectorlogo.zone/logos/snowflake/snowflake-icon.svg",
+    MySQL: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
 
     // Data Viz
     PowerBI: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/New_Power_BI_Logo.svg/960px-New_Power_BI_Logo.svg.png",
     Streamlit: "https://streamlit.io/images/brand/streamlit-mark-color.svg",
     Tableau: "https://cdn.worldvectorlogo.com/logos/tableau-software.svg",
+    Superset: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Apache_Superset_logo.svg/1200px-Apache_Superset_logo.svg.png",
 
     // DevOps & Cloud
     Docker: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
     Airflow: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apacheairflow/apacheairflow-original.svg",
     Kubernetes: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg",
     AWS: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg",
+    Azure: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg",
+    GCP: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg",
+    Terraform: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg",
+    Jenkins: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg",
+    GitHubActions: "https://github.githubassets.com/images/modules/site/icons/actions.svg",
 
     // Machine Learning
     PyTorch: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg",
     MLflow: "https://mlflow.org/docs/latest/api_reference/_static/MLflow-logo-final-black.png",
+    TensorFlow: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg",
+    ScikitLearn: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg",
 
     // Big Data
     Spark: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachespark/apachespark-original.svg",
     Databricks: "https://www.vectorlogo.zone/logos/databricks/databricks-icon.svg",
-    Kafka: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachekafka/apachekafka-original.svg"
+    Kafka: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachekafka/apachekafka-original.svg",
+    Hadoop: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/hadoop/hadoop-original.svg",
+    Hive: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apache/apache-original.svg"
   };
 
   // Compétences techniques basées sur le CV
   const technicalSkills = [
+    // Langages
     {
       category: "languages",
       name: "Python",
@@ -85,26 +108,17 @@ const Skills = () => {
       icon: Database,
       logo: techLogos.SQL,
       level: 85,
-      description: "Requêtes complexes, optimisation",
+      description: "Requêtes complexes, optimisation, procédures stockées",
       gradient: "from-blue-500 to-cyan-500"
     },
     {
-      category: "bigdata",
-      name: "Spark",
-      icon: Server,
-      logo: techLogos.Spark,
-      level: 80,
-      description: "Traitements distribués",
-      gradient: "from-orange-500 to-orange-700"
-    },
-    {
-      category: "bigdata",
-      name: "Databricks",
-      icon: Cloud,
-      logo: techLogos.Databricks,
-      level: 75,
-      description: "Lakehouse, Jobs, Genie IA",
-      gradient: "from-blue-500 to-purple-600"
+      category: "languages",
+      name: "Scala",
+      icon: Code2,
+      logo: techLogos.Scala,
+      level: 70,
+      description: "Programmation fonctionnelle, Spark",
+      gradient: "from-red-500 to-red-700"
     },
     {
       category: "languages",
@@ -112,36 +126,8 @@ const Skills = () => {
       icon: Server,
       logo: techLogos.Flask,
       level: 75,
-      description: "API REST, déploiement",
+      description: "API REST, déploiement, microservices",
       gradient: "from-gray-600 to-gray-800"
-    },
-
-    {
-      category: "devops",
-      name: "Airflow",
-      icon: Workflow,
-      logo: techLogos.Airflow,
-      level: 75,
-      description: "Orchestration, DAGs",
-      gradient: "from-green-600 to-green-700"
-    },
-    {
-      category: "devops",
-      name: "Kubernetes",
-      icon: Server,
-      logo: techLogos.Kubernetes,
-      level: 65,
-      description: "Orchestration de conteneurs",
-      gradient: "from-blue-600 to-blue-800"
-    },
-    {
-      category: "devops",
-      name: "AWS",
-      icon: Cloud,
-      logo: techLogos.AWS,
-      level: 70,
-      description: "S3, EC2, Lambda",
-      gradient: "from-orange-500 to-orange-600"
     },
     {
       category: "languages",
@@ -152,13 +138,136 @@ const Skills = () => {
       description: "Composants, hooks, state management",
       gradient: "from-cyan-500 to-blue-500"
     },
+
+    // Cloud & DevOps (Azure et GCP ajoutés)
+    {
+      category: "cloud",
+      name: "Microsoft Azure",
+      icon: Cloud,
+      logo: techLogos.Azure,
+      level: 80,
+      description: "Data Factory, Databricks, Logic Apps, Key Vault, Data Lake, Synapse Analytics",
+      gradient: "from-blue-600 to-sky-500"
+    },
+    {
+      category: "cloud",
+      name: "Google Cloud Platform",
+      icon: Cloud,
+      logo: techLogos.GCP,
+      level: 75,
+      description: "BigQuery, Cloud Storage, Dataflow, Pub/Sub, Composer",
+      gradient: "from-blue-500 to-cyan-600"
+    },
+    {
+      category: "cloud",
+      name: "AWS",
+      icon: Cloud,
+      logo: techLogos.AWS,
+      level: 70,
+      description: "S3, EC2, Lambda, Glue, Redshift",
+      gradient: "from-orange-500 to-orange-600"
+    },
+    {
+      category: "cloud",
+      name: "Docker",
+      icon: Container,
+      logo: techLogos.Docker,
+      level: 80,
+      description: "Conteneurisation, Docker Compose, multi-stage builds",
+      gradient: "from-blue-500 to-blue-600"
+    },
+    {
+      category: "cloud",
+      name: "Kubernetes",
+      icon: Server,
+      logo: techLogos.Kubernetes,
+      level: 65,
+      description: "Orchestration de conteneurs, déploiements",
+      gradient: "from-blue-600 to-blue-800"
+    },
+    {
+      category: "cloud",
+      name: "Airflow",
+      icon: Workflow,
+      logo: techLogos.Airflow,
+      level: 75,
+      description: "Orchestration, DAGs, scheduling",
+      gradient: "from-green-600 to-green-700"
+    },
+    {
+      category: "cloud",
+      name: "Terraform",
+      icon: GitBranch,
+      logo: techLogos.Terraform,
+      level: 65,
+      description: "Infrastructure as Code, provisioning cloud",
+      gradient: "from-purple-500 to-purple-700"
+    },
+    {
+      category: "cloud",
+      name: "GitHub Actions",
+      icon: Workflow,
+      logo: techLogos.GitHubActions,
+      level: 75,
+      description: "CI/CD pipelines, automatisation",
+      gradient: "from-gray-700 to-gray-900"
+    },
+
+    // Big Data
+    {
+      category: "bigdata",
+      name: "Apache Spark",
+      icon: Server,
+      logo: techLogos.Spark,
+      level: 80,
+      description: "Traitements distribués, PySpark, Spark SQL",
+      gradient: "from-orange-500 to-orange-700"
+    },
+    {
+      category: "bigdata",
+      name: "Databricks",
+      icon: Cloud,
+      logo: techLogos.Databricks,
+      level: 75,
+      description: "Lakehouse, Jobs, Genie IA, Delta Lake",
+      gradient: "from-blue-500 to-purple-600"
+    },
+    {
+      category: "bigdata",
+      name: "Apache Kafka",
+      icon: Workflow,
+      logo: techLogos.Kafka,
+      level: 70,
+      description: "Streaming, ingestion temps réel, Confluent",
+      gradient: "from-gray-600 to-gray-800"
+    },
+    {
+      category: "bigdata",
+      name: "Snowflake",
+      icon: Database,
+      logo: techLogos.Snowflake,
+      level: 70,
+      description: "Data warehouse, ELT, zero-copy cloning",
+      gradient: "from-blue-400 to-blue-600"
+    },
+    {
+      category: "bigdata",
+      name: "Hadoop",
+      icon: Server,
+      logo: techLogos.Hadoop,
+      level: 60,
+      description: "HDFS, YARN, écosystème Hadoop",
+      gradient: "from-yellow-600 to-yellow-800"
+    },
+
+    // Bases de données
     {
       category: "databases",
       name: "PostgreSQL",
       icon: Database,
       logo: techLogos.PostgreSQL,
       level: 85,
-      description: "Modélisation, optimisation",
+      description: "Modélisation, optimisation, transactions",
       gradient: "from-blue-600 to-blue-800"
     },
     {
@@ -167,8 +276,17 @@ const Skills = () => {
       icon: Database,
       logo: techLogos.MongoDB,
       level: 75,
-      description: "NoSQL, aggregation pipeline",
+      description: "NoSQL, aggregation pipeline, indexes",
       gradient: "from-green-600 to-green-800"
+    },
+    {
+      category: "databases",
+      name: "MySQL",
+      icon: Database,
+      logo: techLogos.MySQL,
+      level: 80,
+      description: "Requêtes complexes, réplication",
+      gradient: "from-blue-500 to-cyan-600"
     },
     {
       category: "databases",
@@ -176,16 +294,18 @@ const Skills = () => {
       icon: Cloud,
       logo: techLogos.Firebase,
       level: 70,
-      description: "Realtime DB, authentication",
+      description: "Realtime DB, authentication, Firestore",
       gradient: "from-yellow-500 to-orange-600"
     },
+
+    // Data Viz
     {
       category: "viz",
       name: "Power BI",
       icon: BarChart3,
       logo: techLogos.PowerBI,
       level: 90,
-      description: "DAX, Power Query, data modeling",
+      description: "DAX, Power Query, data modeling, RLS",
       gradient: "from-yellow-500 to-yellow-700"
     },
     {
@@ -194,7 +314,7 @@ const Skills = () => {
       icon: LineChart,
       logo: techLogos.Streamlit,
       level: 85,
-      description: "Dashboards interactifs, déploiement",
+      description: "Dashboards interactifs, déploiement cloud",
       gradient: "from-red-500 to-red-700"
     },
     {
@@ -203,26 +323,46 @@ const Skills = () => {
       icon: BarChart3,
       logo: techLogos.Tableau,
       level: 75,
-      description: "Visualisations, storytelling",
+      description: "Visualisations, storytelling, LOD",
       gradient: "from-blue-500 to-blue-700"
     },
     {
-      category: "devops",
-      name: "Docker",
-      icon: Cloud,
-      logo: techLogos.Docker,
-      level: 80,
-      description: "Conteneurisation, Docker Compose",
-      gradient: "from-blue-500 to-blue-600"
+      category: "viz",
+      name: "Superset",
+      icon: BarChart3,
+      logo: techLogos.Superset,
+      level: 70,
+      description: "Exploration data, dashboards SQL",
+      gradient: "from-teal-500 to-cyan-600"
     },
+
+    // Machine Learning
     {
       category: "ml",
       name: "PyTorch",
       icon: Brain,
       logo: techLogos.PyTorch,
       level: 70,
-      description: "Deep learning, modèles prédictifs",
+      description: "Deep learning, modèles prédictifs, NLP",
       gradient: "from-red-500 to-red-700"
+    },
+    {
+      category: "ml",
+      name: "TensorFlow",
+      icon: Brain,
+      logo: techLogos.TensorFlow,
+      level: 65,
+      description: "Deep learning, Keras, déploiement",
+      gradient: "from-orange-500 to-orange-700"
+    },
+    {
+      category: "ml",
+      name: "Scikit-learn",
+      icon: Brain,
+      logo: techLogos.ScikitLearn,
+      level: 85,
+      description: "Classification, régression, clustering",
+      gradient: "from-blue-400 to-cyan-500"
     },
     {
       category: "ml",
@@ -230,26 +370,8 @@ const Skills = () => {
       icon: Workflow,
       logo: techLogos.MLflow,
       level: 75,
-      description: "Suivi d'expériences",
+      description: "Suivi d'expériences, modèle registry",
       gradient: "from-blue-400 to-cyan-500"
-    },
-    {
-      category: "bigdata",
-      name: "Snowflake",
-      icon: Database,
-      logo: techLogos.Snowflake,
-      level: 70,
-      description: "Data warehouse, ELT",
-      gradient: "from-blue-400 to-blue-600"
-    },
-    {
-      category: "bigdata",
-      name: "Kafka",
-      icon: Workflow,
-      logo: techLogos.Kafka,
-      level: 65,
-      description: "Streaming, ingestion temps réel",
-      gradient: "from-gray-600 to-gray-800"
     }
   ];
 
@@ -310,6 +432,34 @@ const Skills = () => {
       description: "Formation et accompagnement aux outils data",
       gradient: "from-teal-400 to-cyan-500",
       color: "teal"
+    },
+    {
+      name: "Leadership",
+      icon: Target,
+      description: "Pilotage de projets data et coordination d'équipes",
+      gradient: "from-violet-400 to-purple-500",
+      color: "violet"
+    },
+    {
+      name: "Curiosité",
+      icon: Lightbulb,
+      description: "Veille technologique et innovation continue",
+      gradient: "from-amber-400 to-orange-500",
+      color: "amber"
+    },
+    {
+      name: "Autonomie",
+      icon: Timer,
+      description: "Prise d'initiative et gestion indépendante de projets",
+      gradient: "from-cyan-400 to-blue-500",
+      color: "cyan"
+    },
+    {
+      name: "Gestion du stress",
+      icon: Shield,
+      description: "Respect des délais et gestion des urgences",
+      gradient: "from-emerald-400 to-teal-500",
+      color: "emerald"
     }
   ];
 
@@ -320,7 +470,7 @@ const Skills = () => {
     } else {
       setFilteredSkills(technicalSkills.filter(skill => skill.category === activeCategory));
     }
-    setCurrentIndex(0); // Reset carousel index when category changes
+    setCurrentIndex(0);
   }, [activeCategory]);
 
   // Initialiser au chargement
@@ -489,7 +639,12 @@ const Skills = () => {
                                   onError={(e) => {
                                     e.target.onerror = null;
                                     e.target.style.display = 'none';
-                                    e.target.parentNode.innerHTML = `<${skill.icon} size={40} className="text-gray-700" />`;
+                                    const parent = e.target.parentNode;
+                                    if (parent) {
+                                      const iconElement = document.createElement('div');
+                                      iconElement.innerHTML = `<svg class="w-10 h-10 text-gray-700" stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z M12 3v4 M8 3v4 M16 3v4"/></svg>`;
+                                      parent.innerHTML = iconElement.innerHTML;
+                                    }
                                   }}
                                 />
                               ) : (
@@ -505,7 +660,7 @@ const Skills = () => {
                             </h3>
 
                             <span className="inline-block px-2 py-1 bg-gradient-to-r from-blue-50 to-orange-50 rounded-full text-xs font-medium text-gray-600 mb-3">
-                              {categories.find(c => c.id === skill.category)?.name}
+                              {categories.find(c => c.id === skill.category)?.name || skill.category}
                             </span>
 
                             <p className="text-xs text-gray-500 mb-4 line-clamp-2">
@@ -545,8 +700,8 @@ const Skills = () => {
                       onClick={prevSlide}
                       disabled={currentIndex === 0}
                       className={`absolute left-0 top-1/2 transform -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center transition-all duration-300 ${
-                        currentIndex === 0 
-                          ? 'opacity-50 cursor-not-allowed' 
+                        currentIndex === 0
+                          ? 'opacity-50 cursor-not-allowed'
                           : 'hover:scale-110 hover:bg-gradient-to-r hover:from-blue-500 hover:to-orange-500 hover:text-white'
                       }`}
                     >
@@ -557,8 +712,8 @@ const Skills = () => {
                       onClick={nextSlide}
                       disabled={currentIndex === totalPages - 1}
                       className={`absolute right-0 top-1/2 transform -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center transition-all duration-300 ${
-                        currentIndex === totalPages - 1 
-                          ? 'opacity-50 cursor-not-allowed' 
+                        currentIndex === totalPages - 1
+                          ? 'opacity-50 cursor-not-allowed'
                           : 'hover:scale-110 hover:bg-gradient-to-r hover:from-blue-500 hover:to-orange-500 hover:text-white'
                       }`}
                     >
@@ -618,7 +773,7 @@ const Skills = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {softSkills.map((skill, index) => (
+              {softSkills.slice(0, 8).map((skill, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, scale: 0.9 }}
@@ -664,11 +819,20 @@ const Skills = () => {
             </div>
             <div className="flex items-center gap-2">
               <span className="w-3 h-3 bg-orange-500 rounded-full" />
-              <span className="text-sm font-medium text-gray-700">Anglais: B2</span>
+              <span className="text-sm font-medium text-gray-700">Anglais: B2 </span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-3 h-3 bg-purple-500 rounded-full" />
+              <span className="text-sm font-medium text-gray-700">Espagnol: A2</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="px-3 py-1.5 bg-gradient-to-r from-blue-100 to-orange-100 rounded-full text-xs font-medium text-gray-700">
-                Méthodologie Agile
+                Méthodologie Agile (Scrum)
+              </span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="px-3 py-1.5 bg-gradient-to-r from-green-100 to-emerald-100 rounded-full text-xs font-medium text-gray-700">
+                Certifié
               </span>
             </div>
           </div>
