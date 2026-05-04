@@ -51,11 +51,39 @@ import bankingImage from '../assets/banking_project.png';
 import weatherImage from '../assets/weather_project.png';
 import databricksImage from '../assets/databricks_project.png';
 import streamingImage from '../assets/streaming_project.png';
+import azureImage from '../assets/azure.png'; // Nouvelle image Azure
 // Les autres images si disponibles
 import churnImage from '../assets/churn_project.png';
 import performanceImage from '../assets/performance_project.png';
 
 const projects = [
+  // PROJET 0 - Automatisation complète du flux de données CRM (Azure)
+  {
+    title: "Automatisation du Flux de Données CRM",
+    type: "Personnel",
+    description: "Automatisation complète du flux de données CRM d'une entreprise, depuis l'extraction de sources on-premises jusqu'à la restitution de KPIs dans PowerBI, en passant par la transformation, la sécurisation et l'orchestration des données sur Azure.",
+    businessValue: "Cette solution permet aux entreprises de bénéficier d'un pipeline de données entièrement automatisé et sécurisé, réduisant les interventions manuelles et accélérant la prise de décision grâce à des KPIs actualisés en temps réel dans PowerBI.",
+    points: [
+      " Extraction automatique depuis sources on-premises via Self-Hosted Integration Runtime (SHIR)",
+      " Sécurisation des données avec Key Vault et Secret Scope",
+      " Orchestration complète avec Logic Apps et monitoring avancé",
+      " Transformation des données avec Azure Databricks et Data Factory",
+      " Stockage organisé en Data Lake Storage Gen2 (Raw → Transformé)",
+      " Restitution des KPIs dans Power BI pour les équipes métier"
+    ],
+    technologies: ["Azure Data Factory", "Azure Databricks", "Logic Apps", "Key Vault", "Data Lake Storage Gen2", "Power BI", "Synapse Analytics", "Self-Hosted IR", "Git", "Monitor"],
+    gradient: "from-blue-600 to-sky-500",
+    icon: Cloud,
+    color: "blue",
+    businessMetrics: ["Pipeline automatisé", "KPI temps réel", "Sécurisé"],
+    bgPattern: "radial-gradient(circle at 20% 30%, rgba(0,120,212,0.05) 0%, transparent 50%)",
+    link: "", // À remplacer par le lien LinkedIn du projet Azure
+    category: "data-engineering",
+    featured: true,
+    image: azureImage,
+    businessIcon: Database
+  },
+
   // PROJET 1 - Banking End-to-End Data Engineering
   {
     title: "Pipeline Bancaire Temps Réel",
@@ -63,12 +91,12 @@ const projects = [
     description: "Un système intelligent qui capture automatiquement chaque transaction bancaire et la transforme en tableaux de bord pour piloter la performance commerciale et détecter les opportunités.",
     businessValue: "Ce pipeline permet à une banque de suivre en temps réel l'activité de ses clients, d'identifier les comptes les plus actifs et d'optimiser ses stratégies commerciales avec une vision claire des dépôts vs retraits.",
     points: [
-      "📊 Suivi en temps réel des clients actifs et des volumes de transactions",
-      "💰 Visualisation des soldes moyens et de la répartition des opérations",
-      "🔄 Conservation de l'historique complet pour analyser l'évolution des comportements",
-      "📈 Tableau de bord Power BI avec indicateurs clés pour la prise de décision",
-      "⚡ Automatisation complète : les données sont actualisées sans intervention manuelle",
-      "🔒 Architecture sécurisée comparable aux standards des grandes banques"
+      " Suivi en temps réel des clients actifs et des volumes de transactions",
+      " Visualisation des soldes moyens et de la répartition des opérations",
+      " Conservation de l'historique complet pour analyser l'évolution des comportements",
+      " Tableau de bord Power BI avec indicateurs clés pour la prise de décision",
+      " Automatisation complète : les données sont actualisées sans intervention manuelle",
+      " Architecture sécurisée comparable aux standards des grandes banques"
     ],
     technologies: ["PostgreSQL", "Kafka", "Debezium", "MinIO", "Snowflake", "dbt", "Airflow", "Power BI", "GitHub Actions", "Docker"],
     gradient: "from-indigo-500 to-cyan-500",
@@ -83,20 +111,19 @@ const projects = [
     businessIcon: DollarSign
   },
 
-
-   // PROJET 2 - Streaming Reviews Pipeline with NLP
+  // PROJET 2 - Streaming Reviews Pipeline with NLP
   {
     title: "Analyse des Avis Clients en Temps Réel",
     type: "Personnel",
     description: "Un pipeline intelligent qui analyse automatiquement des millions d'avis clients pour comprendre instantanément le ressenti des utilisateurs et détecter les tendances.",
     businessValue: "Ce système permet aux entreprises de surveiller en temps réel la satisfaction client, d'identifier rapidement les problèmes et de prendre des décisions pour améliorer leurs services.",
     points: [
-      "🧠 Analyse automatique du sentiment des avis : 71.4% positifs, 26.98% négatifs",
-      "📊 137 573 avis traités et enrichis automatiquement",
-      "🗺️ Visualisation géographique des avis par ville et par entreprise",
-      "⏱️ Détection en temps réel des pics d'insatisfaction pour réagir immédiatement",
-      "📈 Tableau de bord Kibana pour suivre les entreprises les plus commentées",
-      "💡 Architecture résiliente qui continue de fonctionner même en cas de panne"
+      " Analyse automatique du sentiment des avis : 71.4% positifs, 26.98% négatifs",
+      " 137 573 avis traités et enrichis automatiquement",
+      " Visualisation géographique des avis par ville et par entreprise",
+      " Détection en temps réel des pics d'insatisfaction pour réagir immédiatement",
+      " Tableau de bord Kibana pour suivre les entreprises les plus commentées",
+      " Architecture résiliente qui continue de fonctionner même en cas de panne"
     ],
     technologies: ["Apache Kafka", "Apache Spark", "MongoDB Atlas", "Elasticsearch", "Kibana", "Confluent Cloud", "Hugging Face", "DistilBERT", "NLP", "Python"],
     gradient: "from-purple-500 to-pink-500",
@@ -104,7 +131,7 @@ const projects = [
     color: "purple",
     businessMetrics: ["137K+ avis", "71.4% positifs", "Temps réel"],
     bgPattern: "radial-gradient(circle at 30% 40%, rgba(168,85,247,0.05) 0%, transparent 50%)",
-    link: "https://www.linkedin.com/posts/francois-louis-marie-ntonga-7b982329b_pipepline-data-engineering-end-to-end-ugcPost-7436720862646505472-jtUV?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEiPCr0BJYutV6DGpPs-hFdaMf39pxwKllQ", // À remplacer par votre lien
+    link: "https://www.linkedin.com/posts/francois-louis-marie-ntonga-7b982329b_pipepline-data-engineering-end-to-end-ugcPost-7436720862646505472-jtUV?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEiPCr0BJYutV6DGpPs-hFdaMf39pxwKllQ",
     category: "data-engineering",
     featured: true,
     image: streamingImage,
@@ -118,12 +145,12 @@ const projects = [
     description: "Un système qui collecte automatiquement les données météo toutes les minutes et les transforme en tableaux de bord dynamiques pour anticiper les conditions climatiques.",
     businessValue: "Ce pipeline permet à une entreprise dépendante de la météo (agriculture, logistique, énergie) d'anticiper les conditions et d'optimiser ses opérations en temps réel.",
     points: [
-      "🌦️ Collecte automatique des données météo toutes les minutes sans intervention humaine",
-      "📊 Tableaux de bord dynamiques avec rafraîchissement automatique des prévisions",
-      "⚡ Architecture industrialisée : l'ensemble du système est conteneurisé et reproductible",
-      "🔄 Orchestration complète : ingestion et transformation enchaînées automatiquement",
-      "📈 Visualisations interactives pour une lecture intuitive des tendances climatiques",
-      "🚀 Prêt pour un déploiement en production avec des standards professionnels"
+      "️ Collecte automatique des données météo toutes les minutes sans intervention humaine",
+      " Tableaux de bord dynamiques avec rafraîchissement automatique des prévisions",
+      " Architecture industrialisée : l'ensemble du système est conteneurisé et reproductible",
+      " Orchestration complète : ingestion et transformation enchaînées automatiquement",
+      " Visualisations interactives pour une lecture intuitive des tendances climatiques",
+      " Prêt pour un déploiement en production avec des standards professionnels"
     ],
     technologies: ["Airflow", "dbt", "PostgreSQL", "Docker", "Python", "API REST", "Superset", "SQL", "Weatherstack"],
     gradient: "from-teal-500 to-emerald-500",
@@ -145,12 +172,12 @@ const projects = [
     description: "Une plateforme complète qui consolide les données de ventes de deux entreprises après acquisition pour offrir une vision unifiée de la performance commerciale.",
     businessValue: "Ce pipeline permet aux équipes commerciales et finance de piloter le chiffre d'affaires, d'identifier les produits et clients les plus rentables, et d'analyser les tendances de vente.",
     points: [
-      "📈 Suivi du chiffre d'affaires en temps réel : 105.34 B de revenus analysés",
-      "🏆 Identification des produits stars et des clients stratégiques (Top clients : FitnessWorld, FastTrack Sports)",
-      "📊 Analyse par canal de vente : 78% Retailer vs 20% Direct",
-      "📅 Détection des saisonnalités et pics d'activité (Q4 très fort)",
-      "🤖 Exploration des données en langage naturel via IA Genie",
-      "📱 Dashboard interactif accessible aux équipes métier sans compétences techniques"
+      " Suivi du chiffre d'affaires en temps réel : 105.34 B de revenus analysés",
+      " Identification des produits stars et des clients stratégiques (Top clients : FitnessWorld, FastTrack Sports)",
+      " Analyse par canal de vente : 78% Retailer vs 20% Direct",
+      " Détection des saisonnalités et pics d'activité (Q4 très fort)",
+      " Exploration des données en langage naturel via IA Genie",
+      " Dashboard interactif accessible aux équipes métier sans compétences techniques"
     ],
     technologies: ["Databricks", "Apache Spark", "Python", "SQL", "Amazon S3", "Lakehouse", "Genie IA"],
     gradient: "from-blue-400 to-orange-400",
@@ -164,8 +191,6 @@ const projects = [
     businessIcon: ShoppingCart
   },
 
-
-
   // PROJET 5 - Customer Churn Analytics Dashboard
   {
     title: "Prédiction du Risque de Perte Clients",
@@ -173,12 +198,12 @@ const projects = [
     description: "Un outil d'analyse qui identifie les clients susceptibles de quitter la banque et permet d'agir avant qu'ils ne partent.",
     businessValue: "Ce système permet à une banque de réduire le taux d'attrition en identifiant les clients à risque et en prenant des mesures préventives ciblées.",
     points: [
-      "🎯 Précision de 89% dans l'identification des clients à risque de départ",
-      "📊 Dashboard interactif pour visualiser les segments clients les plus vulnérables",
-      "💡 Recommandations business avec un ROI estimé à +35%",
-      "⚡ Prédictions en temps réel et par lot selon les besoins",
-      "📈 Analyse des facteurs clés qui poussent les clients à partir",
-      "🛡️ Stratégies de rétention personnalisées basées sur les données"
+      " Précision de 89% dans l'identification des clients à risque de départ",
+      " Dashboard interactif pour visualiser les segments clients les plus vulnérables",
+      " Recommandations business avec un ROI estimé à +35%",
+      " Prédictions en temps réel et par lot selon les besoins",
+      " Analyse des facteurs clés qui poussent les clients à partir",
+      " Stratégies de rétention personnalisées basées sur les données"
     ],
     technologies: ["Random Forest", "Streamlit", "Python", "Scikit-learn", "Power BI"],
     gradient: "from-orange-400 to-blue-400",
@@ -199,12 +224,12 @@ const projects = [
     description: "Un tableau de bord complet pour analyser les ventes, optimiser les performances et réduire les commandes annulées.",
     businessValue: "Cet outil permet aux équipes commerciales de visualiser leur performance en temps réel et d'identifier les axes d'amélioration pour augmenter le chiffre d'affaires.",
     points: [
-      "📊 Analyse du chiffre d'affaires total et du panier moyen des clients",
-      "⚠️ Identification des causes d'annulation (taux de 25%) pour les réduire",
-      "📅 Suivi des tendances mensuelles et trimestrielles de vente",
-      "💡 Création de KPIs stratégiques pour piloter l'activité",
-      "🎯 Visualisation claire des opportunités d'optimisation",
-      "📱 Interface intuitive accessible à tous les managers"
+      " Analyse du chiffre d'affaires total et du panier moyen des clients",
+      " Identification des causes d'annulation (taux de 25%) pour les réduire",
+      " Suivi des tendances mensuelles et trimestrielles de vente",
+      " Création de KPIs stratégiques pour piloter l'activité",
+      " Visualisation claire des opportunités d'optimisation",
+      " Interface intuitive accessible à tous les managers"
     ],
     technologies: ["Power BI", "Power Query", "DAX", "Data Modeling", "CSV", "Business Intelligence"],
     gradient: "from-blue-400 to-orange-400",
